@@ -5,10 +5,16 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 public class TestNgPractice2Test extends TestNgBasicConfigAnnotationPracticeTest{
+
 	@Test(groups="sanity")
-	public void mohan() {
+	public void mohan1() {
 		Reporter.log("mohan", true);
 	}
+	
+	@Test(groups="sanity")
+	public void mohan() {
+		Reporter.log("Sanjay", true);
+}
 
 @Test(groups="sanity")
 public void practice1Test() {
