@@ -10,7 +10,7 @@ import org.testng.Reporter;
 /**
  * This class contains only java specific reusable methods
  * @author MOHAN GOWDA
- *
+ * This file is edited by mohan
  */
 public class JavaUtility {
 
