@@ -7,7 +7,7 @@ import java.util.Properties;
 /**
  * This class contains only Property file Specific common methods
  * @author MOHAN GOWDA
- *
+ * It is file Utility
  */
 public class FileUtility {
 	 Properties property;
