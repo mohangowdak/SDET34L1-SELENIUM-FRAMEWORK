@@ -3,7 +3,7 @@ package com.vtiger.practice;
 
 import org.testng.Reporter;
 import org.testng.annotations.Test;
-
+@Listeners(com.sdet34l1.genericUtility.ListenerImplementation.class)
 public class TestNgPractice2Test extends TestNgBasicConfigAnnotationPracticeTest{
 
 	@Test(groups="sanity")
