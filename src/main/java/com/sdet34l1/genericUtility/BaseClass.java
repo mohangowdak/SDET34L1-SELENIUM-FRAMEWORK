@@ -1,9 +1,13 @@
 package com.sdet34l1.genericUtility;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -36,7 +40,7 @@ public class BaseClass {
 	public int randomNumber;
 	public static String username;
 	public static String password;
-	//public String browser;
+    public String browser;
 	public String url;
 	public long longTimeOut;
 
@@ -59,9 +63,9 @@ public class BaseClass {
 	 * create the instance for common object repository class
 	 * @throws IOException 
 	 */
-	@Parameters("browser")
+//	@Parameters("browser")
 	@BeforeClass(groups = "baseclass")
-	public void beforeClass1Test(String browser) throws IOException {
+	public void beforeClass1Test(/*String browser*/) throws IOException {
 		fileUtility=new FileUtility();
 		excelUtility=new ExcelUtility();
 		javaUtility=new JavaUtility();
@@ -76,18 +80,21 @@ public class BaseClass {
 		String timeout = fileUtility.getDataFromPropertyFile("timeout");
 		username = fileUtility.getDataFromPropertyFile("userName");
 		password = fileUtility.getDataFromPropertyFile("password");
-		// browser=fileUtility.getDataFromPropertyFile("browser");
+		browser=fileUtility.getDataFromPropertyFile("browser");
 		longTimeOut = javaUtility.stringToLong(timeout);
 		randomNumber = javaUtility.getRandomNumber(1000);
 
-
+		Map<String, Object> prefs = new HashMap<String, Object>();
+		 prefs.put("download.default_directory",  System.getProperty("user.dir")+ File.separator + "externalFiles" + File.separator + "downloadFiles");
+		 ChromeOptions options = new ChromeOptions();
+		 options.setExperimentalOption("prefs", prefs);
 		
 
 		//launch browser instance
 		switch (browser) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver=new ChromeDriver();
+			driver=new ChromeDriver(options);
 			break;
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
@@ -96,7 +103,7 @@ public class BaseClass {
 		default:
 			javaUtility.printStatement("please specify proper browser key");
 			WebDriverManager.chromedriver().setup();
-			driver=new ChromeDriver();
+			driver=new ChromeDriver(options);
 			break;
 		}
 
@@ -136,7 +143,6 @@ public class BaseClass {
 
 	@AfterMethod(groups = "baseclass")
 	public void afterMethod1Test() {
-		webDriverUtility.waitUntillElementVisible(commonpage.getHeaderText());
 		homePage.signout(driver, webDriverUtility);
 		
 		

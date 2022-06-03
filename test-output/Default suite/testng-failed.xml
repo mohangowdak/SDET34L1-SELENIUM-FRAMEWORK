@@ -3,20 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.vtiger.practice.TestNgAssertTest">
+      <class name="com.vtiger.practice.ShadowElement1">
         <methods>
-          <include name="aftersuite1Test"/>
-          <include name="afterCass1Test"/>
-          <include name="beforeClass1Test"/>
-          <include name="practice3Test"/>
-          <include name="beforeMethod1Test"/>
-          <include name="afterMethod1Test"/>
-          <include name="practice2Test"/>
-          <include name="beforeTest1Test"/>
-          <include name="afterTest1Test"/>
-          <include name="beforesuite1Test"/>
+          <include name="practice"/>
         </methods>
-      </class> <!-- com.vtiger.practice.TestNgAssertTest -->
+      </class> <!-- com.vtiger.practice.ShadowElement1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
