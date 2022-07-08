@@ -28,6 +28,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  * @author MOHAN GOWDA
  *It is a base Class of Sanjay
  */
+
+//
 public class BaseClass {
 	public WebDriver driver;
 	public LoginPage loginPage;
